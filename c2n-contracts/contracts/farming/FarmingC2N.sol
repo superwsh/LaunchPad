@@ -231,7 +231,7 @@ contract FarmingC2N is Ownable {
     function emergencyWithdraw(uint _pid) public {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
-        pool.lptoken.safeTransfer(msg.sneder, user.amount);
+        pool.lptoken.safeTransfer(msg.sender, user.amount);
         pool.totalDeposits -= user.amount;
         emit EmergencyWithdraw(msg.sender, _pid, user.amount);
         user.amount = 0;

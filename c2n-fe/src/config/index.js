@@ -15,7 +15,27 @@ export const stakingPoolAddresses = [
         depositTokenAddress: contractAddresses['local']['C2N-TOKEN'], // 填C2N-Token的地址
         earnedTokenAddress: contractAddresses['local']['C2N-TOKEN'], // 填C2N-Token的地址
     },
+    {
+        chainId: 59141,
+        stakingAddress: contractAddresses['local']['AllocationStakingProxy'], // 填AllocationStakingProxy的地址
+        // TODO
+        depositTokenAddress: contractAddresses['local']['C2N-TOKEN'], // 填C2N-Token的地址
+        earnedTokenAddress: contractAddresses['local']['C2N-TOKEN'], // 填C2N-Token的地址
+    },
 ];
+
+export const swapAddresses = [
+    {
+        chainId: 31337,
+        routerAddress: contractAddresses['local']['UniswapV2Router'],
+        factoryAddress: contractAddresses['local']['UniswapV2Factory'],
+    },
+    {
+        chainId: 11155111,
+        routerAddress: contractAddresses['sepolia']['UniswapV2Router'],
+        factoryAddress: contractAddresses['sepolia']['UniswapV2Factory'],
+    }
+]
 
 export const API_DOMAIN = process.env.NEXT_PUBLIC_SERVER_DOMAIN;
 
@@ -29,6 +49,7 @@ export const VALID_CHAIN_IDS = [
     // bsc test network
     97,
     31337,
+    59141
 ];
 
 export * from "./valid_chains";
@@ -61,6 +82,40 @@ export const tokenAbi = [
 
     // Events
 ];
+
+export const routerAbi = [
+    // Read-Only Functions
+    "function getAmountsOut(uint amountIn, address[] memory path) external view returns (uint[] memory)",
+    "function getAmountsIn(uint amountOut, address[] memory path) external view returns (uint[] memory)",
+    "function factory() view returns (address)",
+    "function WETH() view returns (address)",
+
+    // Authenticated Functions
+    "function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) returns (uint[] memory amounts)",
+    "function swapTokensForExactTokens(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline) returns (uint[] memory amounts)",
+    "function addLiquidity(address tokenA, address tokenB, uint amountADesired, uint amountBDesired, uint amountAMin, uint amountBMin, address to, uint deadline) returns (uint amountA, uint amountB, uint liquidity)",
+    "function removeLiquidity(address tokenA, address tokenB, uint liquidity, uint amountAMin, uint amountBMin, address to, uint deadline) returns (uint amountA, uint amountB)",
+    // Events
+]
+
+export const pairAbi = [
+    // Read-Only Functions
+    "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
+    "function token0() view returns (address)",
+    "function token1() view returns (address)",
+    "function balanceOf(address owner) view returns (uint256)",
+    "function totalSupply() view returns (uint256)",
+
+    // Events
+]
+
+export const factoryAbi = [
+    // Read-Only Functions
+    "function getPair(address tokenA, address tokenB) view returns (address pair)",
+    "function allPairsLength() view returns (uint)",
+    "function allPairs(uint) view returns (address pair)",
+    // Events
+]
 
 export const tokenImage =
     "http://bobabrewery.oss-ap-southeast-1.aliyuncs.com/brewery_logo.jpg";

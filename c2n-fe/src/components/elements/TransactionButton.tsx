@@ -38,9 +38,9 @@ export default function TransactionButton(props: TransactionButtonProps) {
   const waitForTransaction = useCallback(
     () => {
       if (props.onClick) {
-        setLoading(true);
         const ret = props.onClick();
         if (ret instanceof Promise) {
+          setLoading(true);
           ret
             .then(() => {
               setLoading(false);
@@ -49,7 +49,6 @@ export default function TransactionButton(props: TransactionButtonProps) {
               setLoading(false);
             });
         } else {
-          setLoading(false);
         }
       }
     },

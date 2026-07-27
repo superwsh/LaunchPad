@@ -28,7 +28,7 @@ export default function Header() {
       '/farming',
       '/pools',
       '/project',
-      '/bridge',
+      '/dex',
     ].indexOf(router.pathname)
   }, [router])
 
@@ -52,6 +52,11 @@ export default function Header() {
       <div className={[styles['menu-item']].join(' ')}>
         <Link href="/stake">
           <div className={[styles.button, activeTabIndex == 1 ? styles['active'] : ''].join(' ')}>Staking</div>
+        </Link>
+      </div>
+      <div className={[styles['menu-item']].join(' ')}>
+        <Link href="/dex">
+          <div className={[styles.button, activeTabIndex == 4 ? styles['active'] : ''].join(' ')}>Dex</div>
         </Link>
       </div>
       <div className={[styles['menu-item']].join(' ')}>
@@ -91,6 +96,9 @@ export default function Header() {
                 </Link>
                 <Link href="/stake">
                   <div className={[styles.button, activeTabIndex == 1 ? styles['active'] : ''].join(' ')}>Staking</div>
+                </Link>
+                <Link href="/dex">
+                  <div className={[styles.button, activeTabIndex == 4 ? styles['active'] : ''].join(' ')}>Dex</div>
                 </Link>
                 <WalletButton />
                 <NetworkButton />

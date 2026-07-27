@@ -35,6 +35,20 @@ const chains = [
     "infoURL": "https://www.sepolia.io"
   },
   {
+    name: "Linea Sepolia",
+    chainId: 59141,
+    shortName: "linea-sepolia",
+    networkId: 59141,
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpc: ["https://linea-sepolia.infura.io"],
+    faucets: [],
+    infoURL: "https://sepolia.lineascan.build",
+  },
+  {
     "name": "Expanse Network",
     "chainId": 2,
     "shortName": "exp",
